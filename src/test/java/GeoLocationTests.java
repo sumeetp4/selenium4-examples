@@ -1,5 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WindowType;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v85.emulation.Emulation;
@@ -34,6 +35,22 @@ public class GeoLocationTests {
         driver.manage().window().maximize();
         String address = webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.id("address"))).getText();
         Assert.assertTrue(address.contains("Dubai"));
+    }
+
+    @Test
+    public void multipleTab() {
+        driver.navigate().to("https://www.google.com");
+        driver.switchTo().newWindow(WindowType.TAB);
+        driver.navigate().to("https://www.amazon.in/");
+        Assert.assertTrue(driver.getTitle().contains("Amazon"));
+    }
+
+    @Test
+    public void multipleWindow() {
+        driver.navigate().to("https://www.google.com");
+        driver.switchTo().newWindow(WindowType.WINDOW);
+        driver.navigate().to("https://www.amazon.in/");
+        Assert.assertTrue(driver.getTitle().contains("Amazon"));
     }
 
     @AfterTest
