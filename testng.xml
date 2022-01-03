@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Selenium 4 Examples Test Suite">
-    <parameter name="browserName" value="Chrome"></parameter>
-    <test name="analyzeNewsContent">
+    <test name="Example Tests">
         <classes>
-            <class name="GeoLocationTests"></class>
+            <class name="GeoLocationTests">
+            <methods>
+                <include name="geoLocationTest"/>
+                <include name="multipleTab"/>
+                <include name="multipleWindow"/>
+            </methods>
+            </class>
         </classes>
     </test>
 </suite>
